@@ -11,7 +11,7 @@ Before connecting Cassandra with Python, you need to first install Cassandra on 
 Next, you need to install the official Cassandra driver for Python. You can do this using pip, the package installer for Python, with the following command:
 
 ```python
- pip install cassandra-driver
+pip install cassandra-driver
 ```
 
 ## Importing the Cassandra driver in your Python code:
@@ -19,7 +19,7 @@ Next, you need to install the official Cassandra driver for Python. You can do t
 Once the driver is installed, you can import it in your Python code using the following statement:
 
 ```python
- from cassandra.cluster import Cluster
+from cassandra.cluster import Cluster
 ```
 
 ## Connecting to the Cassandra cluster:
@@ -27,8 +27,8 @@ Once the driver is installed, you can import it in your Python code using the fo
 To connect to the Cassandra cluster, you need to create an instance of the Cluster class and provide the IP addresses of the Cassandra nodes you want to connect to. Here's an example:
 
 ```python
- cluster = Cluster(['<YOUR IP ADDRESS>'])
- session = cluster.connect()
+cluster = Cluster(['<YOUR IP ADDRESS>'])
+session = cluster.connect()
 ```
 
 Replace `<YOUR IP ADDRESS>` with the IP addresses of your Cassandra nodes and this creates a new session object that you can use to interact with the Cassandra database.
@@ -38,7 +38,7 @@ Replace `<YOUR IP ADDRESS>` with the IP addresses of your Cassandra nodes and th
 You can execute queries on the Cassandra database using the session object. Here's an example of how to create a new keyspace:
 
 ```python
- session.execute("CREATE KEYSPACE mykeyspace WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 3}")
+session.execute("CREATE KEYSPACE mykeyspace WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 3}")
 ```
 
 This creates a new keyspace named `mykeyspace` with a replication factor of 3.
@@ -48,7 +48,7 @@ This creates a new keyspace named `mykeyspace` with a replication factor of 3.
 Once you're done executing queries, it's important to close the connection to the Cassandra cluster. You can do this by calling the `close()` method on the session object:
 
 ```python
- session.close()
+session.close()
 ```
 
 This releases any resources that were allocated for the connection.
@@ -60,7 +60,7 @@ This releases any resources that were allocated for the connection.
 To create a new table in a keyspace, you can use the following syntax:
 
 ```python
- session.execute("CREATE TABLE mykeyspace.mytable (id int PRIMARY KEY, name text, age int)")
+session.execute("CREATE TABLE mykeyspace.mytable (id int PRIMARY KEY, name text, age int)")
 ```
 
 This creates a new table named `mytable` in the `mykeyspace` keyspace, with three columns: `id`, `name`, and `age`.
@@ -70,7 +70,7 @@ This creates a new table named `mytable` in the `mykeyspace` keyspace, with thre
 To insert data into a table, you can use the following syntax:
 
 ```python
- session.execute("INSERT INTO mykeyspace.mytable (id, name, age) VALUES (1, 'John', 30)")
+session.execute("INSERT INTO mykeyspace.mytable (id, name, age) VALUES (1, 'John', 30)")
 ```
 
 This inserts a new row into the `mytable` table with an id of 1, a name of `John`, and an age of 30.
@@ -80,10 +80,10 @@ This inserts a new row into the `mytable` table with an id of 1, a name of `John
 To query data from a table, you can use the following syntax:
 
 ```python
- result = session.execute("SELECT * FROM mykeyspace.mytable WHERE id = 1")
+result = session.execute("SELECT * FROM mykeyspace.mytable WHERE id = 1")
 
- for row in result:
-     print(row.id, row.name, row.age)
+for row in result:
+    print(row.id, row.name, row.age)
 ```
 
 This queries the `mytable` table for rows where the id column is equal to 1, and then prints the values of the id, name, and age columns for each row.
@@ -93,7 +93,7 @@ This queries the `mytable` table for rows where the id column is equal to 1, and
 To update data in a table, you can use the following syntax:
 
 ```python
- session.execute("UPDATE mykeyspace.mytable SET name = 'Jane' WHERE id = 1")
+session.execute("UPDATE mykeyspace.mytable SET name = 'Jane' WHERE id = 1")
 ```
 
 This updates the `name` column in the row where the id column is equal to 1 to `Jane`.
@@ -103,7 +103,7 @@ This updates the `name` column in the row where the id column is equal to 1 to `
 To delete data from a table, you can use the following syntax:
 
 ```python
- session.execute("DELETE FROM mykeyspace.mytable WHERE id = 1")
+session.execute("DELETE FROM mykeyspace.mytable WHERE id = 1")
 ```
 
 This deletes the row from the `mytable` table where the id column is equal to 1.
@@ -113,7 +113,7 @@ This deletes the row from the `mytable` table where the id column is equal to 1.
 To drop a table, you can use the following syntax:
 
 ```python
- session.execute("DROP TABLE mykeyspace.mytable")
+session.execute("DROP TABLE mykeyspace.mytable")
 ```
 
 This drops the `mytable` table from the `mykeyspace` keyspace.
